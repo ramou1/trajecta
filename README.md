@@ -2,7 +2,7 @@
 
 Projeto MVP para estimativa de consumo de combustível em trajetos com carros e motos.
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 ### MVP Inicial
 - **Rotas Fixas**: Conjunto limitado de trajetos pré-definidos (SP-RJ, SP-Campinas, etc)
@@ -20,7 +20,7 @@ Projeto MVP para estimativa de consumo de combustível em trajetos com carros e 
 - Página de consulta com filtros (tipo, marca)
 - Página de resultado com estimativas detalhadas
 
-## 📋 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 trajecta/
@@ -51,7 +51,7 @@ trajecta/
         └── ... (outras imagens)
 ```
 
-## 🚗 Veículos Cadastrados
+## Veículos Cadastrados
 
 ### Carros
 - Fiat Uno 1.0 Fire Flex
@@ -68,7 +68,7 @@ trajecta/
 - Honda CB 650R
 - Kawasaki Ninja 650 ABS
 
-## 🗺️ Rotas Disponíveis
+## Rotas Disponíveis
 
 1. São Paulo - SP → Rio de Janeiro - RJ (429 km)
 2. São Paulo - SP → Campinas - SP (99 km)
@@ -77,7 +77,7 @@ trajecta/
 5. São Paulo - SP → Curitiba - PR (408 km)
 6. São Paulo - SP → Santos - SP (72 km)
 
-## 💻 Tecnologias
+## Tecnologias
 
 - **Next.js 16** - Framework React
 - **TypeScript** - Tipagem estática
@@ -86,7 +86,7 @@ trajecta/
 - **Lucide React** - Ícones
 - **Fonte Inter** - Tipografia
 
-## 🏃 Como Executar
+## Como Executar
 
 1. Instale as dependências:
 ```bash
@@ -100,7 +100,7 @@ npm run dev
 
 3. Acesse [http://localhost:3000](http://localhost:3000)
 
-## 📱 Como Usar
+## Como Usar
 
 1. **Cadastro/Login**: Crie uma conta ou faça login
 2. **Selecione a Rota**: Escolha uma das rotas pré-definidas
@@ -108,7 +108,7 @@ npm run dev
 4. **Escolha o Veículo**: Filtre e selecione o veículo desejado
 5. **Veja o Resultado**: Consulte a estimativa de consumo, custos e tempo
 
-## 🧮 Lógica de Cálculo
+## Lógica de Cálculo
 
 O sistema calcula:
 - Consumo total baseado em distâncias urbana e rodoviária
@@ -122,7 +122,7 @@ O sistema calcula:
 - Tempo estimado com ajuste para trânsito (20% mais tempo em horário de pico)
 - Paradas necessárias para abastecimento
 
-## 🎨 Design e Cores
+## Design e Cores
 
 ### Cores Oficiais
 - Verde: `#5dae44`
@@ -137,7 +137,7 @@ O sistema calcula:
   - Exemplos: `onix.jpg`, `uno.jpg`, `gol.jpg`, `corolla.jpg`
   - Nome do arquivo deve ser o nome do modelo em minúsculas, sem espaços ou números
 
-## 🎯 Próximos Passos (Futuro)
+## Próximos Passos (Futuro)
 
 - Sistema de comparação premium (R$ 9,90/mês)
 - Mais rotas personalizadas

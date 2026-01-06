@@ -23,6 +23,8 @@ function ResultadoContent() {
   const [estimativa, setEstimativa] = useState<EstimativaTrajeto | null>(null);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     // Verificar autenticação no client-side
     const storedUser = localStorage.getItem('trajecta_user');
     if (!storedUser) {

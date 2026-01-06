@@ -17,15 +17,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [usuario, setUsuario] = useState<Usuario | null>(null);
 
   useEffect(() => {
-    // Verificar se há usuário salvo no localStorage
-    const storedUser = localStorage.getItem('trajecta_user');
-    if (storedUser) {
-      setUsuario(JSON.parse(storedUser));
+    // Verificar se há usuário salvo no localStorage (apenas no client-side)
+    if (typeof window !== 'undefined') {
+      const storedUser = localStorage.getItem('trajecta_user');
+      if (storedUser) {
+        setUsuario(JSON.parse(storedUser));
+      }
     }
   }, []);
 
   const cadastrar = (nome: string, email: string, telefone: string, senha: string): boolean => {
     // MVP - aceita qualquer dado
+    if (typeof window === 'undefined') return false;
+    
     const novoUsuario: Usuario = {
       id: Date.now().toString(),
       nome: nome || 'Usuário',
@@ -47,6 +51,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = (email: string, senha: string): boolean => {
     // MVP - aceita qualquer email e senha
+    if (typeof window === 'undefined') return false;
+    
     // Buscar usuário ou criar um temporário
     const users = JSON.parse(localStorage.getItem('trajecta_users') || '[]');
     let user = users.find((u: Usuario) => u.email === email && u.senha === senha);
@@ -70,7 +76,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const logout = () => {
-    localStorage.removeItem('trajecta_user');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('trajecta_user');
+    }
     setUsuario(null);
   };
 

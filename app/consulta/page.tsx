@@ -22,11 +22,13 @@ function ConsultaContent() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('trajecta_user');
-    if (!storedUser) {
-      router.replace('/login');
-    } else {
-      setLoading(false);
+    if (typeof window !== 'undefined') {
+      const storedUser = localStorage.getItem('trajecta_user');
+      if (!storedUser) {
+        router.replace('/login');
+      } else {
+        setLoading(false);
+      }
     }
   }, [router]);
 

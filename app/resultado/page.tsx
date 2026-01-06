@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
@@ -310,10 +310,23 @@ function ResultadoContent() {
   );
 }
 
+function ResultadoFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center" style={{ background: 'linear-gradient(to bottom, #ffffff, #bddef0)' }}>
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-16 w-16 border-4 border-t-transparent mx-auto mb-4" style={{ borderColor: CORES_TRAJECTA.azulMedio, borderTopColor: 'transparent' }}></div>
+        <p className="text-gray-600 text-lg font-medium">Carregando...</p>
+      </div>
+    </div>
+  );
+}
+
 export default function Resultado() {
   return (
     <AuthProvider>
-      <ResultadoContent />
+      <Suspense fallback={<ResultadoFallback />}>
+        <ResultadoContent />
+      </Suspense>
     </AuthProvider>
   );
 }

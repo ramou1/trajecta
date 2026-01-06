@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Trajecta - MVP de Estimativa de Trajetos
 
-## Getting Started
+Projeto MVP para estimativa de consumo de combustível em trajetos com carros e motos.
 
-First, run the development server:
+## 🚀 Funcionalidades
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### MVP Inicial
+- **Rotas Fixas**: Conjunto limitado de trajetos pré-definidos (SP-RJ, SP-Campinas, etc)
+- **Base de Veículos**: Modelos essenciais de carros e motos com dados técnicos básicos
+- **Comparação Simples**: Comparação direta de consumo entre veículos
+- **Cálculo de Estimativa**: Sistema que cruza dados técnicos do veículo com informações da rota
+
+### Sistema de Autenticação
+- Cadastro de usuário (email e senha)
+- Login/Logout
+- Controle de sessão com localStorage
+
+### Interface
+- Página inicial explicativa com CTAs
+- Página de consulta com filtros (tipo, marca)
+- Página de resultado com estimativas detalhadas
+
+## 📋 Estrutura do Projeto
+
+```
+trajecta/
+├── app/                    # Páginas Next.js
+│   ├── page.tsx           # Página inicial
+│   ├── login/             # Página de login
+│   ├── cadastro/          # Página de cadastro
+│   ├── consulta/          # Página de consulta de trajetos
+│   └── resultado/         # Página de resultado da estimativa
+├── contexts/              # Contextos React
+│   └── AuthContext.tsx    # Contexto de autenticação
+├── data/                  # Dados mockados
+│   ├── veiculos.ts        # Base de veículos (carros e motos)
+│   └── rotas.ts           # Rotas fixas pré-definidas
+├── types/                 # Tipos TypeScript
+│   └── index.ts           # Interfaces e tipos
+├── utils/                 # Utilitários
+│   └── calculos.ts        # Lógica de cálculo de consumo
+├── constants/             # Constantes
+│   └── colors.ts          # Cores oficiais do projeto
+└── public/                # Arquivos estáticos
+    ├── images/
+    │   └── logo-trajecta.png
+    └── carros/            # Imagens dos carros
+        ├── onix.jpg
+        ├── uno.jpg
+        ├── gol.jpg
+        └── ... (outras imagens)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚗 Veículos Cadastrados
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Carros
+- Fiat Uno 1.0 Fire Flex
+- Volkswagen Gol 1.0 200 Flex
+- Chevrolet Onix 1.0 Turbo Flex
+- Toyota Corolla 2.0 XEi Flex
+- Honda Civic 2.0 EXL Flex
+- Jeep Compass 2.0 4x4 Diesel
+- Toyota Hilux 2.8 CD SRX Diesel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Motos
+- Honda CG 160 Titan
+- Yamaha Fazer 250 ABS
+- Honda CB 650R
+- Kawasaki Ninja 650 ABS
 
-## Learn More
+## 🗺️ Rotas Disponíveis
 
-To learn more about Next.js, take a look at the following resources:
+1. São Paulo - SP → Rio de Janeiro - RJ (429 km)
+2. São Paulo - SP → Campinas - SP (99 km)
+3. São Paulo - SP → Belo Horizonte - MG (586 km)
+4. Rio de Janeiro - RJ → Vitória - ES (524 km)
+5. São Paulo - SP → Curitiba - PR (408 km)
+6. São Paulo - SP → Santos - SP (72 km)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💻 Tecnologias
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Next.js 16** - Framework React
+- **TypeScript** - Tipagem estática
+- **Tailwind CSS** - Estilização
+- **React 19** - Biblioteca UI
+- **Lucide React** - Ícones
+- **Fonte Inter** - Tipografia
 
-## Deploy on Vercel
+## 🏃 Como Executar
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Instale as dependências:
+```bash
+npm install
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. Execute o servidor de desenvolvimento:
+```bash
+npm run dev
+```
+
+3. Acesse [http://localhost:3000](http://localhost:3000)
+
+## 📱 Como Usar
+
+1. **Cadastro/Login**: Crie uma conta ou faça login
+2. **Selecione a Rota**: Escolha uma das rotas pré-definidas
+3. **Informe o Horário**: Defina o horário de partida
+4. **Escolha o Veículo**: Filtre e selecione o veículo desejado
+5. **Veja o Resultado**: Consulte a estimativa de consumo, custos e tempo
+
+## 🧮 Lógica de Cálculo
+
+O sistema calcula:
+- Consumo total baseado em distâncias urbana e rodoviária
+- Ajuste para horários de pico (15% mais consumo)
+- Custo de combustível baseado em preços médios (definidos em `utils/calculos.ts`):
+  - Gasolina: R$ 5,80/L
+  - Etanol: R$ 4,20/L
+  - Flex: R$ 5,00/L (média ponderada)
+  - Diesel: R$ 6,10/L
+- Custo de pedágios
+- Tempo estimado com ajuste para trânsito (20% mais tempo em horário de pico)
+- Paradas necessárias para abastecimento
+
+## 🎨 Design e Cores
+
+### Cores Oficiais
+- Verde: `#5dae44`
+- Verde Água: `#00a8c6`
+- Azul Claro: `#bddef0`
+- Azul Médio: `#0099d3`
+- Azul Escuro: `#00264b`
+
+### Recursos Visuais
+- Logo: `public/images/logo-trajecta.png`
+- Imagens de carros: `public/carros/{nome-do-modelo}.jpg`
+  - Exemplos: `onix.jpg`, `uno.jpg`, `gol.jpg`, `corolla.jpg`
+  - Nome do arquivo deve ser o nome do modelo em minúsculas, sem espaços ou números
+
+## 🎯 Próximos Passos (Futuro)
+
+- Sistema de comparação premium (R$ 9,90/mês)
+- Mais rotas personalizadas
+- Integração com APIs de trânsito
+- Histórico de consultas
+- Exportação de relatórios

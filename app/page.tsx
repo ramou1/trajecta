@@ -186,7 +186,7 @@ function HomeContent() {
       {/* Footer */}
       <footer className="py-12 mt-20 text-white" style={{ backgroundColor: CORES_TRAJECTA.azulEscuro }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-300">&copy; 2024 Trajecta - Estimativa de Trajetos. Todos os direitos reservados.</p>
+          <p className="text-gray-300">&copy; 2026 Trajecta - Estimativa de Trajetos. Todos os direitos reservados.</p>
         </div>
       </footer>
     </div>
